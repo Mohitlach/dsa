@@ -1,0 +1,182 @@
+			Functions/methods
+1. predefined/standard: given by language
+2. custom / user defined: created by user.
+
+types of custom functions
+	without return type without argument
+	without return type with argument
+	with return type without argument
+	with return type with argument
+
+q1. make a function to check whether a no is prime or not
+    public static boolean checkPrime(int num)
+    {
+        boolean ans=true;
+        for(int i=2;i<=num/2;i++)
+        {
+            if(num%i==0)
+            {
+                ans=false;
+                break;
+            }
+        }
+        return ans;
+    }
+q2. make a function that displays table of a given no
+    public static void showTable(int num)
+    {
+        for(int i=1;i<=10;i++)
+        {
+            System.out.println(num+"*"+i+"="+(num*i));
+        }
+    }
+q3. make a function that checks whether a no is even or odd
+    public static boolean checkEven(int num)
+    {
+        if(num%2==0)
+		return true;
+        else
+		return false;
+    }
+q4. make a function which calculates avg of 3 no.
+    public static void findAvg()
+    {
+        Scanner sc= new Scanner(System.in);
+        int a,b,c;
+        System.out.println("enter 3 no:");
+        a=sc.nextInt();
+        b=sc.nextInt();
+        c=sc.nextInt();
+        int sum=a+b+c;
+        double avg = sum/3;
+        System.out.println("average is:"+avg);
+    }
+q5. make a function that displays sum of first n odd no.
+    public static void sumOfOdd(int n)
+    {
+        int i,sum=0;
+        for(i=1;i<=n;i++)
+        {
+            if(i%2!=0)
+                sum+=i;
+        }
+        System.out.println("sum of first "+n+" odd no is:"+sum);
+    }
+q6. make a function that takes base and exponent as its parameter and find its value
+    public static int findPower(int base,int exponent)
+    {
+        int ans=1,i;
+        for(i=1;i<=exponent;i++)
+        {
+            ans=ans*base;
+        }
+        return ans;
+    }
+q7. make a function that takes two no is its parameter and find its greatest common divisor(hcf)
+    public static int findHcf(int a,int b)
+    {
+        int start=(a<b)?a:b;
+        int end=1,i,ans=0;
+        for(i=start;i>=end;i--)
+        {
+            if(a%i==0 && b%i==0)
+            {
+                ans=i;
+                break;
+            }
+        }
+        return ans;
+    }
+q8. print fibonecci series till the no given by user.
+    public static void printFibonecci(int n)
+    {
+        int a,b,c;
+        a=0;
+        b=1;
+        c=a+b;
+        System.out.print(a+"\t"+b+"\t");
+        while (c<=n)
+        {
+            System.out.print(c+"\t");
+            a=b;
+            b=c;
+            c=a+b;
+        }
+    }
+
+		Basics of time and space complexity
+
+time complexity : relation between input size and running time operations
+		linear,quadratic,cubic,log,sqrt.
+best case omega(1)
+	numbers=[1,2,3,4,5]
+	search 1.
+	1 operation 1 unit of time.
+avg case teeta(n+1)/2
+	numbers=[2,3,4,1,5]
+	search 1.
+	1+2+3+4+5/5
+	1+2...n/n
+	n(n+1)/2*n=(n+1)/2
+worst case O(n)
+	numbers=[5,4,3,2,1]
+	diirectly propertional to n
+
+			Worst case (kam kam se kam itta time to lega hi)
+example 1:
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			Sop("hello");
+		}
+	}
+	i    j			n
+	0    0 1 2 3 4....	n
+	1    0 1 2 3 4...	n
+	2    0 1 2 3 4...	n
+	3    0 1 2 3 4..	n
+	4    0 1 2 3 4..	n
+O=n*n
+time complexity=O(n^2)
+
+example 2:
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<m;j++)
+		{
+			sop("hello");
+		}
+	}
+	i    j
+	0    0 1 2 ...m
+	1    0 1 2... m
+	2    0 1 2 ...m
+	.    .
+	.    .
+	n    0 1 2...m
+n*m
+time complexity=O(n*m)
+
+example 3:
+for(i=0;i<n;i++)
+	sop("hello")
+for(j=0;j<m;j++)
+	sop("hello")
+
+i-n
+j-m
+time complexity=O(n+m)
+
+compare:
+O(n)		0(n^2)		O(n^3)  n
+1		1		1	1
+2		4		8	2
+3		9		27	3
+10^5		10^10		10^30	10^5
+
+			Space Complexity
+   space requied in a program to reach at its execution
+   best
+   avg
+   worst
