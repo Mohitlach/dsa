@@ -1,0 +1,311 @@
+			Arrays
+1d:
+	type name[size]= new type[size]l
+	int arr[10]= new int[10];
+	contigous memory,index start with 0
+	q1. take an array of names as an input and print the array.
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in);
+        String[] names= new String[5];
+        System.out.println("enter names in array:");
+        for(int i=0;i< names.length;i++)
+        {
+            System.out.println(i+": ");
+            names[i]= sc.nextLine();
+        }
+        System.out.println("names below:");
+        for(String name:names)
+        {
+            System.out.println(name);
+        }
+   }
+	q2. find min and max in a given array
+        public static void main(String args[])
+        {
+            Scanner sc= new Scanner(System.in);
+            int[] arr={1,2,3,4,5};
+            int min=0,max=0,i;
+            for(i=0;i< arr.length;i++)
+            {
+                if(i==0)
+                {
+                    min=arr[i];
+                    max=arr[i];
+                }
+                else if (arr[i]>max)
+                {
+                    max=arr[i];
+                }
+                else if (arr[i]<min)
+                {
+                    min=arr[i];
+                }
+
+            }
+            System.out.println("max:"+max);
+            System.out.println("min:"+min);
+        }
+	q3. take an array of numbers as input and check whether the array is sorted or not.
+	public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int[] arr = new int[5];
+            int i;
+            boolean isSorted=true;
+            System.out.println("enter values is array:");
+            for(i=0;i<arr.length;i++)
+            {
+                System.out.println(i+": ");
+                arr[i]=sc.nextInt();
+            }
+            System.out.println("Array is:"+Arrays.toString(arr));
+            for(i=0;i<arr.length-1;i++)
+            {
+                if(arr[i]>arr[i+1])
+                {
+                    isSorted=false;
+                    break;
+                }
+            }
+            System.out.println("Array is sorted: "+isSorted);
+        }
+
+_______________________________________________________
+		2d arrays
+	0	1	2	3	4
+0	0,0	0,1	0,2	0,3	0,4
+1	1,0	1,1	1,2	1,3	1,4
+2	2,0	2,1	2,2	2,3	2,4
+
+declaration
+	type[][] arrayName=new type[rows][cols];
+	int[][] numbers = new int[3][5];
+question 1. take rows and cols from user and create a matrix than search a given element.
+        public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int r,c,i,j;
+            System.out.println("enter rows and cols:");
+            r= sc.nextInt();
+            c= sc.nextInt();
+            int[][] array=new int[r][c];
+            for(i=0;i<r;i++)
+            {
+                for (j=0;j<c;j++)
+                {
+                    System.out.println("Arr ["+i+"]["+j+"]:");
+                    array[i][j]= sc.nextInt();
+                }
+            }
+            System.out.println("array below");
+            for(i=0;i<r;i++)
+            {
+                for (j=0;j<c;j++)
+                {
+                    System.out.print(array[i][j]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println("enter value to search:");
+            int value= sc.nextInt();
+            boolean isThere=false;
+            for(i=0;i<r;i++)
+            {
+                for (j=0;j<c;j++)
+                {
+                    if(array[i][j]==value)
+                    {
+                        System.out.println("element found at array["+i+"]["+j+"]");
+                        isThere=true;
+                        break;
+                    }
+                }
+            }
+            if(isThere==false)
+            {
+                System.out.println("element not found");
+            }
+
+        }
+question 2. spiral matrix traversal
+	public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int r,c,i,j;
+            System.out.println("enter rows and cols:");
+            r= sc.nextInt();
+            c= sc.nextInt();
+            int[][] array=new int[r][c];
+            for(i=0;i<r;i++)
+            {
+                for (j=0;j<c;j++)
+                {
+                    System.out.println("Arr ["+i+"]["+j+"]:");
+                    array[i][j]= sc.nextInt();
+                }
+            }
+            System.out.println("array below");
+            for(i=0;i<r;i++)
+            {
+                for (j=0;j<c;j++)
+                {
+                    System.out.print(array[i][j]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println("spiral matrix traversal below");
+            int row_start,row_end,col_start,col_end;
+            row_start=0;
+            row_end=r-1;
+            col_start=0;
+            col_end=c-1;
+            while (row_start<=row_end && col_start<=col_end)
+            {
+                //1
+                for (int col=col_start;col<=col_end;col++)
+                {
+                    System.out.print(array[row_start][col]);
+                }
+                row_start++;
+                //2
+                for(int row=row_start;row<=row_end;row++)
+                {
+                    System.out.print(array[row][col_end]);
+                }
+                col_end--;
+                //3
+                for (int col=col_end;col>=col_start;col--)
+                {
+                    System.out.print(array[row_end][col]);
+                }
+                row_end--;
+                //4
+                for(int row=row_end;row>=row_start;row--)
+                {
+                    System.out.print(array[row][col_start]);
+                }
+                col_start++;
+                System.out.println();
+            }
+        }
+question 3. array transpose
+        public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int r,c,i,j;
+            System.out.println("enter rows and cols:");
+            r= sc.nextInt();
+            c= sc.nextInt();
+            int[][] array=new int[r][c];
+            for(i=0;i<r;i++)
+            {
+                for (j=0;j<c;j++)
+                {
+                    System.out.println("Arr ["+i+"]["+j+"]:");
+                    array[i][j]= sc.nextInt();
+                }
+            }
+            System.out.println("array transposed below");
+            for(i=0;i<r;i++) {
+                for (j = 0; j < c; j++) {
+                    System.out.print(array[j][i] + " ");
+                }
+                System.out.println();
+            }
+        }
+____________________________________________________________________
+			Strings
+*Wrapper class
+Declaration
+	String varname="value";
+	String name="tony stark";
+user input
+	sc.next()//single token | scanner
+	sc.nextLine()//multiple token |scanner
+concatenation (+)
+	"hello"+"world"="helloworld"
+basic methods:
+	compareTo():+ if s1 is greater,- if s2 is greater,0 if both are equal
+	substring(begindex,endindex);//begindex inclusive,endindex exclusive
+	length():returns length
+	String.valueOf():convert to string
+questions:
+1.take an array of strings from user and calculate combined length of those strings.
+	public static void main(String args[]) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("enter length of string array:");
+            int len = sc.nextInt();
+            sc.nextLine();
+            int i, totalLength = 0;
+            String[] arr = new String[len];
+            System.out.println("Enter values in string array:");
+            for (i = 0; i < len; i++) {
+                arr[i] = sc.nextLine();
+            }
+            System.out.println("Array below:");
+            for (i = 0; i < len; i++) {
+                System.out.println(arr[i]);
+                totalLength = totalLength + size(arr[i]);
+            }
+            System.out.println("total length is :"+totalLength);
+
+        }
+        public static int size(String input)
+        {
+            int count=0;
+            for(int i=0;i<input.length();i++)
+            {
+                count++;
+            }
+            return count;
+        }
+2. input a string from the user, create a new string called result in which you will replace e with i.
+	    public static void main(String args[])
+            {
+                Scanner sc = new Scanner(System.in);
+                String input,result="";
+                System.out.println("enter input:");
+                input= sc.nextLine();
+                for(int i=0;i<input.length();i++)
+                {
+                    if(input.charAt(i)=='e'||input.charAt(i)=='E')
+                    {
+                        if(input.charAt(i)=='e')
+                        {
+                            result=result+'i';
+                        }
+                        if(input.charAt(i)=='E')
+                        {
+                            result=result+'I';
+                        }
+                    }
+                    else
+                    {
+                        result=result+input.charAt(i);
+                    }
+                }
+                System.out.println("result is :"+result);
+            }
+3. input an email from the user, you have to create a username from the email by deleting the part coming after @.
+example= "apnaCollegeJava@gmail.com"
+username="apnaCollegaJava"
+	    public static void main(String args[])
+            {
+                Scanner sc= new Scanner(System.in);
+                String email,username="";
+                System.out.println("Enter email:");
+                email=sc.nextLine();
+                for(int i=0;i<email.length();i++)
+                {
+                    if(email.charAt(i)=='@')
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        username=username+email.charAt(i);
+                    }
+                }
+                System.out.println("user name is: "+username);
+            }
