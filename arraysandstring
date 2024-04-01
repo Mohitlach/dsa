@@ -216,6 +216,7 @@ question 3. array transpose
         }
 ____________________________________________________________________
 			Strings
+*immutable
 *Wrapper class
 Declaration
 	String varname="value";
